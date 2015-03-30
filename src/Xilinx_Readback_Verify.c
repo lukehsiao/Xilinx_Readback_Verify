@@ -26,7 +26,7 @@ unsigned verify_readback_word(unsigned data, unsigned gold, unsigned mask) {
   }
   else {
     printf("data: %08x\t masked gold: %08x\n", data, masked_gold);
-    return FALSE:
+    return FALSE;
   }
 }
 
@@ -51,6 +51,8 @@ unsigned verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     mask = convert_ascii_to_binary(mask_line);
     gold = convert_ascii_to_binary(gold_line);
     fread(&data, sizeof(data), 1, readback_data); //read 4 bytes into data
+    
+    //TODO How do I deal with the endianness?
     
     // Compare the values
     if (verify_readback_word(data, gold, mask) == FALSE) {
