@@ -19,7 +19,6 @@ TEST(ProductionCode, ascii_to_binary) {
   unsigned check = 0x0F38;
   
   unsigned result = convert_ascii_to_binary(test);
-  printf("Result: %x\n", result);
   TEST_ASSERT_EQUAL_HEX(check, result);  
   
   
