@@ -20,9 +20,9 @@ TEST(ProductionCode, ascii_to_binary) {
   
   unsigned result = convert_ascii_to_binary(test);
   TEST_ASSERT_EQUAL_HEX(data, result);  
-}
-
-TEST(ProductionCode, small_set) {
+  
+  
+  // Test a more real situation
   char* rbd = "0000111100001010";
   char* msd = "0000001100000000";
   
@@ -36,4 +36,8 @@ TEST(ProductionCode, small_set) {
   
   // Test for Equality
   TEST_ASSERT_BITS(mask, gold, data);
+}
+
+TEST(ProductionCode, small_set) {
+
 }
