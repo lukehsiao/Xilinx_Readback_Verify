@@ -26,7 +26,7 @@ unsigned verify_readback_word(unsigned data, unsigned gold, unsigned mask) {
 }
 
 // Main driver to verify whether two files are equal
-unsigned verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_file) {
+unsigned verify_full_readback(FILE readback_data, FILE rbd_file, FILE msd_file) {
   
   char gold_line[WORD_SIZE];
   char mask_line[WORD_SIZE];

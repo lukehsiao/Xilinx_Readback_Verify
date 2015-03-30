@@ -1,5 +1,6 @@
 #include "unity_fixture.h"
 #include "Xilinx_Readback_Verify.h"
+#include <stdlib.h>
 
 
 TEST_GROUP(ProductionCode);
