@@ -21,7 +21,12 @@ unsigned verify_readback_word(unsigned data, unsigned gold, unsigned mask) {
   unsigned masked_gold = gold & (~mask);
   
   // compare and return
-  return (data == masked_gold);
+  if (data == masked_gold) {
+    return TRUE;
+  else {
+    printf("data: %08x\t masked gold: %08x\n", data, masked_gold);
+    return FALSE:
+  }
 }
 
 // Main driver to verify whether two files are equal
