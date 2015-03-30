@@ -5,3 +5,4 @@
 
 unsigned convert_ascii_to_binary(char* ascii_string);
 
+unsigned verify_readback_word(unsigned data, unsigned gold, unsigned mask);

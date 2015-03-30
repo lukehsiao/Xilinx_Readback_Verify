@@ -15,16 +15,17 @@ TEST_TEAR_DOWN(ProductionCode) {
 }
 
 TEST(ProductionCode, ascii_to_binary) {
-  char* test = "0000111100111000";
+  char* test = "00000000000000000000111100111000";
   unsigned check = 0x0F38;
   
   unsigned result = convert_ascii_to_binary(test);
+  printf("Result: %x\n", result);
   TEST_ASSERT_EQUAL_HEX(check, result);  
   
   
   // Test a more real situation
-  char* rbd = "0000111100001010";
-  char* msd = "0000001100000000";
+  char* rbd = "00000000000000000000111100001010";
+  char* msd = "00000000000000000000001100000000";
   
   unsigned data = 0x0D0A; //0000 1101 0000 1010
   
