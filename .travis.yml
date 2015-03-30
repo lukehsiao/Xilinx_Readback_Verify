@@ -10,3 +10,5 @@ compiler:
 # Change this to your needs
 script: ./configure && make
   
+notifications:
+  email: false  
