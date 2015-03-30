@@ -16,10 +16,10 @@ TEST_TEAR_DOWN(ProductionCode) {
 
 TEST(ProductionCode, ascii_to_binary) {
   char* test = "0000111100111000";
-  unsigned data = 0x0F38;
+  unsigned check = 0x0F38;
   
   unsigned result = convert_ascii_to_binary(test);
-  TEST_ASSERT_EQUAL_HEX(data, result);  
+  TEST_ASSERT_EQUAL_HEX(check, result);  
   
   
   // Test a more real situation
