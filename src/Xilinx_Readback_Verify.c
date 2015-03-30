@@ -41,7 +41,7 @@ unsigned verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     fgets(mask_line, WORD_SIZE, msd_file);
     
     // Convert to Binary
-    mask = convert_ascii_to_binary(msd_line);
+    mask = convert_ascii_to_binary(mask_line);
     gold = convert_ascii_to_binary(gold_line);
     fscanf(readback_data, "%u", &data);
     
