@@ -54,7 +54,7 @@ TEST(ProductionCode, verify_full_readback) {
   FILE* data_file;
   FILE* rbd_file;
   FILE* msd_file;
-  data_file = fopen("./sample/sample1_readback.data", "r");
+  data_file = fopen("./sample/sample1_readback.data", "rb");
   rbd_file = fopen("./sample/sample1.rbd", "r");
   msd_file = fopen("./sample/sample1.msd", "r");
   
