@@ -12,6 +12,6 @@ unsigned convert_ascii_to_binary(char* ascii_string) {
     result = result & (ascii_string[i]-0x30 << (31-i));
   }
   
-  return 0;
+  return result;
 }
 
