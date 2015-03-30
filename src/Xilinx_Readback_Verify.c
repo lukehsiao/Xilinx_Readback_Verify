@@ -11,7 +11,7 @@ unsigned convert_ascii_to_binary(char* ascii_string) {
   for (i = 0; i < 32; i++) {
     printf("%c", ascii_string[i]);
     //ascii_string - 0x30 will convert ascii 0 and 1 to actual 0 and 1
-    result = result & ((ascii_string[i]-0x30) << (31-i));
+    result = result | ((ascii_string[i]-0x30) << (31-i));
   }
   printf("\n");
   return result;
