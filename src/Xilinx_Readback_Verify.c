@@ -21,7 +21,8 @@ unsigned verify_readback_word(unsigned data, unsigned gold, unsigned mask) {
   unsigned masked_gold = gold & (~mask);
   
   // compare and return
-  
+  printf("data: %d\n", data);
+  printf("masked_gold: %d\n", masked_gold);
   return (data == masked_gold);
 }
 
