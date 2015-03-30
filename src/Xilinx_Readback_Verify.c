@@ -23,6 +23,7 @@ unsigned verify_readback_word(unsigned data, unsigned gold, unsigned mask) {
   // compare and return
   if (data == masked_gold) {
     return TRUE;
+  }
   else {
     printf("data: %08x\t masked gold: %08x\n", data, masked_gold);
     return FALSE:
