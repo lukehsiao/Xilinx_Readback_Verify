@@ -14,6 +14,18 @@ TEST_TEAR_DOWN(ProductionCode) {
 	printf("\n");
 }
 
-TEST(ProductionCode, travis) {
-  TEST_ASSERT_EQUAL_INT(88, travis_test());
+TEST(ProductionCode, small_set) {
+  char* rbd = "0000111100001010";
+  char* msd = "0000001100000000";
+  
+  unsigned data = 0x0D0A; //0000 1101 0000 1010
+  
+  unsigned mask = convert_ascii_to_binary(msd);
+  unsigned gold = convert_ascii_to_binary(rbd);
+  
+  // high bits are compared, so invert mask
+  mask = ~mask;  
+  
+  // Test for Equality
+  TEST_ASSERT_BITS(mask, gold, data);
 }
