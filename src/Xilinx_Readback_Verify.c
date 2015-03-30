@@ -21,8 +21,8 @@ unsigned verify_readback_word(unsigned data, unsigned gold, unsigned mask) {
   unsigned masked_gold = gold & (~mask);
   
   // compare and return
-  printf("data: %d\n", data);
-  printf("masked_gold: %d\n", masked_gold);
+  printf("data: %x\n", data);
+  printf("masked_gold: %x\n", masked_gold);
   return (data == masked_gold);
 }
 
@@ -46,7 +46,7 @@ unsigned verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     // Convert to Binary
     mask = convert_ascii_to_binary(mask_line);
     gold = convert_ascii_to_binary(gold_line);
-    fscanf(readback_data, "%u", &data);
+    fread(data, 4); //read 4 bytes into data
     
     // Compare the values
     if (verify_readback_word(data, gold, mask) == FALSE) {
