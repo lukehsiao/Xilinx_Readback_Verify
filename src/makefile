@@ -1,6 +1,6 @@
 
 #CC = gcc
-CFLAGS  = -g -Wall
+CFLAGS = -g -Wall
 
 default: test
 
@@ -11,4 +11,4 @@ test:
 	$(CC) $(CFLAGS) -o test Xilinx_Readback_Verify.c
 
 clean:
-  rm test
+	rm test
