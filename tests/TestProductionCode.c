@@ -1,5 +1,5 @@
-#include "unity/unity_fixture.h"
-#include "../src/Xilinx_Readback_Verify.h"
+#include "unity_fixture.h"
+#include "Xilinx_Readback_Verify.h"
 
 
 TEST_GROUP(ProductionCode);
@@ -15,5 +15,5 @@ TEST_TEAR_DOWN(ProductionCode) {
 }
 
 TEST(ProductionCode, travis) {
-  TEST_ASSERT_EQUAL_INT(88, travis_test();
+  TEST_ASSERT_EQUAL_INT(88, travis_test());
 }

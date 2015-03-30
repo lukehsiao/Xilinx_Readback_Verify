@@ -9,7 +9,7 @@ compiler:
   - clang
 
 # Run Unit Tests
-script: cd src && make && ./test
+script: cd tests && make && ./test
   
 notifications:
   email: false  
