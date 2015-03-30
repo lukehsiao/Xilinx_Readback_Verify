@@ -14,6 +14,14 @@ TEST_TEAR_DOWN(ProductionCode) {
 	printf("\n");
 }
 
+TEST(ProductionCode, ascii_to_binary) {
+  char* test = "0000111100111000"
+  unsigned data = 0x0F38;
+  
+  unsigned result = convert_ascii_to_binary(test);
+  TEST_ASSERT_EQUAL_HEX(data, result);  
+}
+
 TEST(ProductionCode, small_set) {
   char* rbd = "0000111100001010";
   char* msd = "0000001100000000";
