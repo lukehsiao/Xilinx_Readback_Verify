@@ -39,6 +39,13 @@ TEST(ProductionCode, ascii_to_binary) {
   TEST_ASSERT_BITS(mask, gold, data);
 }
 
-TEST(ProductionCode, small_set) {
-
+TEST(ProductionCode, verify_readback_word) {
+  unsigned rdb = 0xDEADBEEF;
+  unsigned mask = 0x0;
+  unsigned data = 0x0EADB00F;
+  
+  TEST_ASSERT_FALSE(verify_readback_word(data, rdb, mask));
+  
+  mask = 0xF0000FF0;
+  TEST_ASSERT_TRUE(verify_readback_word(data, rdb, mask));
 }
