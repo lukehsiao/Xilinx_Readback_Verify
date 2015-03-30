@@ -1,4 +1,16 @@
 # Xilinx Readback Verify
 [![Build Status](https://travis-ci.org/lukehsiao/Xilinx_Readback_Verify.svg?branch=master)](https://travis-ci.org/lukehsiao/Xilinx_Readback_Verify)
 
-A simple tool for verifying readback data for Xilinx Virtex 5 and 7-series devices
+## Introduction
+
+[Virtex 5 Configuration Guide](http://www.xilinx.com/support/documentation/user_guides/ug191.pdf)
+
+[Xilinx 7-series Configuration Guide](http://www.xilinx.com/support/documentation/user_guides/ug470_7Series_Config.pdf)
+
+Both the Xilinx Virtex 5 and the 7-series FPGAs share a common procedure for verifying readback data. The guides linked above share two methods for verifying the data: (1) compare readback data to the RBD golden readback file, masked with the MSD and (2) Compare readback data to the configuration BIT file, masking with the MSK.
+
+This simple program utilizes the 1st method.
+
+## Usage
+[TODO]
+
