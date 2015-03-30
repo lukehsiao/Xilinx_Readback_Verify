@@ -35,6 +35,8 @@ unsigned verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
   unsigned mask;
   unsigned gold;
   
+  unsigned line_number = 1;
+  
   while (!feof(readback_data) && !feof(rbd_file) && !feof(msd_file)) {
     // read in a line
     fgets(gold_line, WORD_SIZE, rbd_file);
@@ -47,8 +49,10 @@ unsigned verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     
     // Compare the values
     if (verify_readback_word(data, gold, mask) == FALSE) {
+      printf("Not equal from line: %d\n", line_number);
       return FALSE;
     }
+    line_number++;
   }
   
   //TODO I don't think this properly checks that the files are the same sizes
