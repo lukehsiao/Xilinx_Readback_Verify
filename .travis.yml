@@ -1,3 +1,8 @@
+################################################################
+# Travis CI Configuration file for Xilinx Readback Verification
+# Created by Luke Hsiao
+# 30 March 2015
+################################################################
 language: c
 compiler:
   - gcc
