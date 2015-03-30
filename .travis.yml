@@ -7,8 +7,9 @@ language: c
 compiler:
   - gcc
   - clang
-# Change this to your needs
-script: ./configure && make
+
+# Run Unit Tests
+script: cd src && make && ./test
   
 notifications:
   email: false  
