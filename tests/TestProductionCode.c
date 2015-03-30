@@ -48,3 +48,23 @@ TEST(ProductionCode, verify_readback_word) {
   mask = 0xF0000FF0;
   TEST_ASSERT_TRUE(verify_readback_word(data, rdb, mask));
 }
+
+TEST(ProductionCode, verify_full_readback) {
+  FILE* data_file, rbd_file, msd_file;
+  data_file = fopen("./sample/sample1_readback.data", "r");
+  rbd_file = fopen("./sample/sample1.rbd", "r");
+  msd_file = fopen("./sample/sample1.msd", "r");
+  
+  if (data_file == NULL) {
+    printf("Could not open readback data file\n");
+  }
+  else if (rbd_file == NULL) {
+    printf("Could not open RBD Golden File\n");
+  }
+  else if (msd_file == NULL) {
+    printf("Could not open MSD file\n");
+  }
+  
+  unsigned result = verify_full_readback(data_file, rbd_file, msd_file);
+  TEST_ASSERT_TRUE(result);
+}
