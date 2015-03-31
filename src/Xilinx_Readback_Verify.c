@@ -26,7 +26,7 @@ uint32_t verify_readback_word(uint32_t data, uint32_t gold, uint32_t mask) {
     return TRUE;
   }
   else {
-    printf("data: %08x\t masked gold: %08x\n", masked_data, masked_gold);
+    printf("\nmasked data: %08x\t masked gold: %08x\n", masked_data, masked_gold);
     return FALSE;
   }
 }
@@ -98,7 +98,7 @@ uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     // Convert to Binary
     mask = convert_ascii_to_binary(mask_line);
     gold = convert_ascii_to_binary(gold_line);
-    result = fread(&data, sizeof(data), 1, readback_data); //read 4 bytes into data
+    result = fread(&data, sizeof(uint32_t), 1, readback_data); //read 4 bytes into data
     if (result != 1) {
       printf("Error reading readback binary file!\n");
       return FALSE;
