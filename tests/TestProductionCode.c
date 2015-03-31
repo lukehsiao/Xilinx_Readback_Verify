@@ -46,7 +46,7 @@ TEST(ProductionCode, ascii_to_binary) {
   TEST_ASSERT_BITS(mask, gold, data);
   
   rbd = "00000000000000000000000000000000\n";
-  msd = "00000000000000000000000000000000\n"
+  msd = "00000000000000000000000000000000\n";
   data = 0x0;
   mask = convert_ascii_to_binary(msd);
   gold = convert_ascii_to_binary(rbd);
