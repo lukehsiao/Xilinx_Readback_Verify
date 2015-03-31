@@ -22,6 +22,12 @@ TEST(ProductionCode, ascii_to_binary) {
   unsigned result = convert_ascii_to_binary(test);
   TEST_ASSERT_EQUAL_HEX(check, result);  
   
+  test = "11110000000000000000111100111000";
+  check = 0xF0000F38;
+  
+  unsigned result = convert_ascii_to_binary(test);
+  TEST_ASSERT_EQUAL_HEX(check, result);  
+  
   
   // Test a more real situation
   char* rbd = "00000000000000000000111100001010";
