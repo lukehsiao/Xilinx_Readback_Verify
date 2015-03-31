@@ -13,6 +13,19 @@ Both the Xilinx Virtex 5 and the 7-series FPGAs share a common procedure for ver
 
 This simple program utilizes the 1st method by converting the ASCII output of Xilinx ISE to binary and comparing it with readback data, word for word.
 
+## How do I build it?
+Currently, this is designed for Linux. Clone the repository to the folder of your choice by using
+```
+git clone 
+```
+Then, follow these steps:  
+  1. change directory to src
+  2. run make
+  3. copy the RBD golden file and MSD file produced by Xilinx bitgen to the src folder
+  4. run ./verify_readback [TODO USAGE]
+
+Note that this will also output a binary file named "*golden_output.data*" for future use. This binary file can be directly used in diff (or other existing file comparison tools) to compare to binary readback data from the FPGA.
+
 ## Usage
 [TODO]
 
