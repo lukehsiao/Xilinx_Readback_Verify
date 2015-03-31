@@ -4,11 +4,11 @@
 
 //----------------------------------------------------------------------------
 // User must edit these values to match the FPGA being used
-#define WORDS_PER_FRAME 101
+#define WORDS_PER_FRAME 41
 //----------------------------------------------------------------------------
 
 
-#define WORD_SIZE 34 // extra bit for null terminator
+#define WORD_SIZE 34 // extra bit for \n and null terminator
 #define TRUE 1
 #define FALSE 0
 

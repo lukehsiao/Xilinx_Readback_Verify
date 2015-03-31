@@ -44,6 +44,18 @@ TEST(ProductionCode, ascii_to_binary) {
   
   // Test for Equality
   TEST_ASSERT_BITS(mask, gold, data);
+  
+  rbd = "00000000000000000000000000000000\n";
+  msd = "00000000000000000000000000000000\n"
+  data = 0x0;
+  mask = convert_ascii_to_binary(msd);
+  gold = convert_ascii_to_binary(rbd);
+  // high bits are compared, so invert mask
+  mask = ~mask;  
+  
+  // Test for Equality
+  TEST_ASSERT_BITS(mask, gold, data);
+  
 }
 
 TEST(ProductionCode, verify_readback_word) {
