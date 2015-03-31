@@ -2,8 +2,8 @@
 
 
 // Given a 32 character string of 0s and 1s, returns the equivalent 32-bit int
-unsigned convert_ascii_to_binary(char* ascii_string) {
-  unsigned result;
+uint32_t convert_ascii_to_binary(char* ascii_string) {
+  uint32_t result;
   result = 0;
   
   int i;
@@ -15,10 +15,10 @@ unsigned convert_ascii_to_binary(char* ascii_string) {
 }
 
 // Given the binary values of a word in a frame, determine if they are equal
-unsigned verify_readback_word(unsigned data, unsigned gold, unsigned mask) {
+uint32_t verify_readback_word(uint32_t data, uint32_t gold, uint32_t mask) {
   
   // Mask Gold with Mask
-  unsigned masked_gold = gold & (~mask);
+  uint32_t masked_gold = gold & (~mask);
   
   // compare and return
   if (data == masked_gold) {
@@ -38,9 +38,11 @@ void output_golden_binary(FILE* rbd_file, FILE* msd_file) {
   
   char gold_line[WORD_SIZE];
   char mask_line[WORD_SIZE];
-  unsigned gold;
-  unsigned mask;
-  unsigned masked_gold;
+  uint32_t gold;
+  uint32_t mask;
+  uint32_t masked_gold;
+  
+  uint32_t line_number = 1;
   
   while(!feof(rbd_file) && !feof(msd_file)) {
     // read in a line
@@ -56,22 +58,23 @@ void output_golden_binary(FILE* rbd_file, FILE* msd_file) {
     
     // Output to file
     fwrite(&masked_gold, 4, 1, out);
+    line_number++;
   }
   fclose(out);
   printf("Golden output saved as golden_binary.data\n\n");
 }
 
 // Main driver to verify whether two files are equal
-unsigned verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_file) {
+uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_file) {
   
   char gold_line[WORD_SIZE];
   char mask_line[WORD_SIZE];
   
-  unsigned data;
-  unsigned mask;
-  unsigned gold;
+  uint32_t data;
+  uint32_t mask;
+  uint32_t gold;
   
-  unsigned line_number = 1;
+  uint32_t line_number = 1;
   
   while (!feof(readback_data) && !feof(rbd_file) && !feof(msd_file)) {
     // read in a line

@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <stdint.h> // for keeping things 32-bit
 
 //----------------------------------------------------------------------------
 // User must edit these values to match the FPGA being used
@@ -11,10 +12,10 @@
 #define TRUE 1
 #define FALSE 0
 
-unsigned convert_ascii_to_binary(char* ascii_string);
+uint32_t convert_ascii_to_binary(char* ascii_string);
 
-unsigned verify_readback_word(unsigned data, unsigned gold, unsigned mask);
+uint32_t verify_readback_word(uint32_t data, uint32_t gold, uint32_t mask);
 
-unsigned verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_file);
+uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_file);
 
 void output_golden_binary();

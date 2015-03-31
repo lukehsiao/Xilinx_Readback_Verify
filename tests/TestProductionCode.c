@@ -1,6 +1,7 @@
 #include "unity_fixture.h"
 #include "Xilinx_Readback_Verify.h"
 #include <stdlib.h>
+#include <stdint.h>
 
 
 TEST_GROUP(ProductionCode);
@@ -17,15 +18,15 @@ TEST_TEAR_DOWN(ProductionCode) {
 
 TEST(ProductionCode, ascii_to_binary) {
   char* test = "00000000000000000000111100111000";
-  unsigned check = 0x0F38;
+  uint32_t check = 0x0F38;
   
-  unsigned result = convert_ascii_to_binary(test);
+  uint32_t result = convert_ascii_to_binary(test);
   TEST_ASSERT_EQUAL_HEX(check, result);  
   
   test = "11110000000000000000111100111000";
   check = 0xF0000F38;
   
-  unsigned result = convert_ascii_to_binary(test);
+  uint32_t result = convert_ascii_to_binary(test);
   TEST_ASSERT_EQUAL_HEX(check, result);  
   
   
@@ -33,10 +34,10 @@ TEST(ProductionCode, ascii_to_binary) {
   char* rbd = "00000000000000000000111100001010";
   char* msd = "00000000000000000000001100000000";
   
-  unsigned data = 0x0D0A; //0000 1101 0000 1010
+  uint32_t data = 0x0D0A; //0000 1101 0000 1010
   
-  unsigned mask = convert_ascii_to_binary(msd);
-  unsigned gold = convert_ascii_to_binary(rbd);
+  uint32_t mask = convert_ascii_to_binary(msd);
+  uint32_t gold = convert_ascii_to_binary(rbd);
   
   // high bits are compared, so invert mask
   mask = ~mask;  
@@ -46,9 +47,9 @@ TEST(ProductionCode, ascii_to_binary) {
 }
 
 TEST(ProductionCode, verify_readback_word) {
-  unsigned rdb = 0xDEADBEEF;
-  unsigned mask = 0x0;
-  unsigned data = 0x0EADB00F;
+  uint32_t rdb = 0xDEADBEEF;
+  uint32_t mask = 0x0;
+  uint32_t data = 0x0EADB00F;
   
   TEST_ASSERT_FALSE(verify_readback_word(data, rdb, mask));
   
@@ -74,7 +75,7 @@ TEST(ProductionCode, verify_full_readback) {
     printf("Could not open MSD file\n");
   }
   
-  unsigned result = verify_full_readback(data_file, rbd_file, msd_file);
+  uint32_t result = verify_full_readback(data_file, rbd_file, msd_file);
   TEST_ASSERT_TRUE(result);
   
   fclose(data_file);
