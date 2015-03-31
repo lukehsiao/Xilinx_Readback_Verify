@@ -26,7 +26,7 @@ TEST(ProductionCode, ascii_to_binary) {
   test = "11110000000000000000111100111000";
   check = 0xF0000F38;
   
-  uint32_t result = convert_ascii_to_binary(test);
+  result = convert_ascii_to_binary(test);
   TEST_ASSERT_EQUAL_HEX(check, result);  
   
   
@@ -54,6 +54,9 @@ TEST(ProductionCode, verify_readback_word) {
   TEST_ASSERT_FALSE(verify_readback_word(data, rdb, mask));
   
   mask = 0xF0000FF0;
+  TEST_ASSERT_TRUE(verify_readback_word(data, rdb, mask));
+  
+  mask = 0xFFFFFFFF;
   TEST_ASSERT_TRUE(verify_readback_word(data, rdb, mask));
 }
 
