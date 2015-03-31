@@ -100,9 +100,10 @@ uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     gold = convert_ascii_to_binary(gold_line);
     result = fread(&data, sizeof(uint32_t), 1, readback_data); //read 4 bytes into data
     if (result != 1) {
-      printf("Error reading readback binary file!\n");
+      printf("Reached the end of the binary file!\n");
+      printf("Did you not readback the BRAMs?\n");
       printf("Stopped comparison on line: %d\n", line_number);
-      return FALSE;
+      return TRUE;
     }    
     // Compare the values
     if (verify_readback_word(data, gold, mask) == FALSE) {
