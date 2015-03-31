@@ -9,20 +9,32 @@ int main(int argc, char *argv[]) {
     // Parse commandline arguments
     int i;
 		for(i = 1; i < argc; i++){
-			if(compare(argv[i], "-info") == 0){
-				printf("This function continuously writes the original configuration to memory without "
-						"checking for errors\nBlind Scrubbing Options\n-r  Perform full read back before scrubbing "
-						"from read back file\n-g <FileName>  Scrub using specified golden file (.rbd)\n");
+			if(compare(argv[i], "-h") == 0){
+				printf("USAGE: ./verify_readback [mask file] [rbd file]\n");
 				return 0;
-			}else if(compare(argv[i], "-r") == 0){
-				printf("Read back started\n");
-				device_data = jtag_read_config_frame(JTAG_virtual_address, 0,
-						ZYNQ_JTAG_SCRUBBER_NUMBER_OF_FRAMES_LOGIC, 0);
-				FILE *f = fopen("read_back.data", "wb");
-				fwrite(device_data, sizeof(int),
-						ZYNQ_JTAG_SCRUBBER_NUMBER_OF_FRAMES_LOGIC*ZYNQ_JTAG_SCRUBBER_WORDS_PER_FRAME, f);
-				fclose(f);
-				printf("Read back finished\n");
 			}
 		}
+    
+    FILE* rbd_file;
+    FILE* msd_file;
+    data_file = fopen("../tests/sample/sample1_readback.data", "rb");
+    rbd_file = fopen("../tests/sample/sample1.rbd", "r");
+    msd_file = fopen("../tests/sample/sample1.msd", "r");
+    
+    if (data_file == NULL) {
+      printf("Could not open readback data file\n");
+    }
+    else if (rbd_file == NULL) {
+      printf("Could not open RBD Golden File\n");
+    }
+    else if (msd_file == NULL) {
+      printf("Could not open MSD file\n");
+    }
+    
+    // Create Golden File
+    output_golden_binary(FILE* rbd_file, FILE* msd_file);
+    
+    fclose(data_file);
+    fclose(rbd_file);
+    fclose(msd_file);
 }

@@ -70,4 +70,8 @@ TEST(ProductionCode, verify_full_readback) {
   
   unsigned result = verify_full_readback(data_file, rbd_file, msd_file);
   TEST_ASSERT_TRUE(result);
+  
+  fclose(data_file);
+  fclose(rbd_file);
+  fclose(msd_file);
 }
