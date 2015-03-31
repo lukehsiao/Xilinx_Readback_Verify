@@ -19,13 +19,14 @@ uint32_t verify_readback_word(uint32_t data, uint32_t gold, uint32_t mask) {
   
   // Mask Gold with Mask
   uint32_t masked_gold = gold & (~mask);
+  uint32_t masked_data = data & (~mask); //ignore data in the mask as well.
   
-  // compare and return
-  if (data == masked_gold) {
+  // compare and return  
+  if (masked_data == masked_gold) {
     return TRUE;
   }
   else {
-    printf("data: %08x\t masked gold: %08x\n", data, masked_gold);
+    printf("data: %08x\t masked gold: %08x\n", masked_data, masked_gold);
     return FALSE;
   }
 }
