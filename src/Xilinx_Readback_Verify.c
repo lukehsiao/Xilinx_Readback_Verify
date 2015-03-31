@@ -42,12 +42,15 @@ void output_golden_binary(FILE* rbd_file, FILE* msd_file) {
   uint32_t mask;
   uint32_t masked_gold;
   
-  uint32_t line_number = 1;
+  uint32_t line_number = 0;
   
-  while(!feof(rbd_file) && !feof(msd_file)) {
-    // read in a line
-    fgets(gold_line, WORD_SIZE, rbd_file);
-    fgets(mask_line, WORD_SIZE, msd_file);
+  // Read line by line (including newline character)
+  while(fgets(gold_line, WORD_SIZE, rbd_file) != NULL && fgets(mask_line, WORD_SIZE, msd_file) != NULL) {
+    line_number++;
+    
+    // Eliminate newline
+    gold_line[32] = '\0';
+    mask_line[32] = '\0';
     
     // Convert to Binary
     mask = convert_ascii_to_binary(mask_line);
@@ -58,9 +61,15 @@ void output_golden_binary(FILE* rbd_file, FILE* msd_file) {
     
     // Output to file
     fwrite(&masked_gold, 4, 1, out);
-    line_number++;
+    
+    // Sanity check printout
+    if ((line_number % 1000) == 0) {
+      printf("%s\t", gold_line);
+      printf("%s\n", mask_line);
+    }
   }
   fclose(out);
+  printf("Parsed through %d lines.\n", line_number);
   printf("Golden output saved as golden_binary.data\n\n");
 }
 

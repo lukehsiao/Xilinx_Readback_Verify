@@ -8,7 +8,7 @@
 //----------------------------------------------------------------------------
 
 
-#define WORD_SIZE 33 // extra bit for null terminator
+#define WORD_SIZE 34 // extra bit for null terminator
 #define TRUE 1
 #define FALSE 0
 

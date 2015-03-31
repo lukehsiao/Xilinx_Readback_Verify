@@ -52,7 +52,6 @@ int main(int argc, char *argv[]) {
     
     // Create Golden File
     output_golden_binary(rbd_file, msd_file);
-    printf("Returned to main\n");
     
     //fclose(data_file);
     fclose(rbd_file);
