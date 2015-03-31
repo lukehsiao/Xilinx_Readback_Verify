@@ -86,7 +86,7 @@ uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
   uint32_t gold;
   size_t result;
   
-  uint32_t line_number = 1;
+  uint32_t line_number = 0;
   // Read line by line (including newline character)
   while(fgets(gold_line, WORD_SIZE, rbd_file) != NULL && fgets(mask_line, WORD_SIZE, msd_file) != NULL) {
     line_number++;
