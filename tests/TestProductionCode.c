@@ -58,6 +58,9 @@ TEST(ProductionCode, verify_readback_word) {
   
   mask = 0xFFFFFFFF;
   TEST_ASSERT_TRUE(verify_readback_word(data, rdb, mask));
+  
+  mask = 0xFFF00FFF;
+  TEST_ASSERT_TRUE(verify_readback_word(data, rdb, mask));
 }
 
 TEST(ProductionCode, verify_full_readback_correct) {
