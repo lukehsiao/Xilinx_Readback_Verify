@@ -31,6 +31,7 @@ uint32_t verify_readback_word(uint32_t data, uint32_t gold, uint32_t mask) {
 }
 
 // Parses the RBD and MSD ASCII and creates a golden binary file for comparison
+// Note that they will not perfectly match because mask bits are zeroed
 void output_golden_binary(FILE* rbd_file, FILE* msd_file) {
   printf("Creating golden binary file...\n");
   FILE* out;
@@ -82,29 +83,31 @@ uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
   uint32_t data;
   uint32_t mask;
   uint32_t gold;
+  size_t result;
   
   uint32_t line_number = 1;
-  
-  while (!feof(readback_data) && !feof(rbd_file) && !feof(msd_file)) {
-    // read in a line
-    fgets(gold_line, WORD_SIZE, rbd_file);
-    fgets(mask_line, WORD_SIZE, msd_file);
+  // Read line by line (including newline character)
+  while(fgets(gold_line, WORD_SIZE, rbd_file) != NULL && fgets(mask_line, WORD_SIZE, msd_file) != NULL) {
+    line_number++;
+    
+    // Eliminate newline
+    gold_line[32] = '\0';
+    mask_line[32] = '\0';
     
     // Convert to Binary
     mask = convert_ascii_to_binary(mask_line);
     gold = convert_ascii_to_binary(gold_line);
-    fread(&data, sizeof(data), 1, readback_data); //read 4 bytes into data
-    
-    //TODO How do I deal with the endianness?
-    
+    result = fread(&data, sizeof(data), 1, readback_data); //read 4 bytes into data
+    if (result != 1) {
+      printf("Error reading readback binary file!\n");
+      return FALSE;
+    }    
     // Compare the values
     if (verify_readback_word(data, gold, mask) == FALSE) {
       printf("Not equal from line: %d\n", line_number);
       return FALSE;
     }
-    line_number++;
-  }
-  
+  }  
   //TODO I don't think this properly checks that the files are the same sizes
   return TRUE;
 }

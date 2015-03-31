@@ -35,8 +35,8 @@ int main(int argc, char *argv[]) {
     
     FILE* rbd_file;
     FILE* msd_file;
-    //FILE* data_file;
-    //data_file = fopen("../tests/sample/sample1_readback.data", "rb");
+    FILE* data_file;
+    data_file = fopen("../tests/sample/sample1_correct.data", "rb");
     rbd_file = fopen("../tests/sample/ZYNQ/sample1.rbd", "r");
     msd_file = fopen("../tests/sample/ZYNQ/sample1.msd", "r");
     
@@ -50,8 +50,12 @@ int main(int argc, char *argv[]) {
       printf("Could not open MSD file\n");
     }
     
-    // Create Golden File
-    output_golden_binary(rbd_file, msd_file);
+    if (verify_full_readback(data_file, rbd_file, msd_file) == TRUE) {
+      printf("Readback data is correct!\n");
+    }
+    else {
+      printf("Readback data is NOT correct.\n");
+    }
     
     //fclose(data_file);
     fclose(rbd_file);
