@@ -37,7 +37,7 @@ void output_golden_binary(FILE* rbd_file, FILE* msd_file) {
   
   char gold_line[WORD_SIZE];
   char mask_line[WORD_SIZE];
-  unsigned data;
+  unsigned gold;
   unsigned mask;
   unsigned masked_gold;
   
