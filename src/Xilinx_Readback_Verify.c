@@ -101,6 +101,7 @@ uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     result = fread(&data, sizeof(uint32_t), 1, readback_data); //read 4 bytes into data
     if (result != 1) {
       printf("Error reading readback binary file!\n");
+      printf("Stopped comparison on line: %d\n", line_number);
       return FALSE;
     }    
     // Compare the values

@@ -8,7 +8,7 @@ TEST_GROUP(ProductionCode);
 
 // This code runs before each and every test
 TEST_SETUP(ProductionCode) {
-
+  printf("\n");
 }
 
 // Unity Test Framework, this is run after each test
