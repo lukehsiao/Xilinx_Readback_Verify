@@ -10,8 +10,6 @@ C_SRCS = \
 ./test_runners/all_tests.c \
 ./TestProductionCode.c \
 
-# All executates have an associated object file
-OBJS = $(C_SRCS:.c=.o)
 
 INC_DIRS = -I./unity -I../src
 
@@ -22,7 +20,7 @@ all: clean default
 
 default:
 	$(CC) $(CFLAGS) $(INC_DIRS) $(C_SRCS) -o $(EXE)
-	./$(EXE)
+	./$(EXE) #run the unit tests
 	
 clean:
 	rm -f $(EXE)

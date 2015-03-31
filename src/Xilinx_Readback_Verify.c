@@ -32,6 +32,7 @@ unsigned verify_readback_word(unsigned data, unsigned gold, unsigned mask) {
 
 // Parses the RBD and MSD ASCII and creates a golden binary file for comparison
 void output_golden_binary(FILE* rbd_file, FILE* msd_file) {
+  printf("Creating golden binary file...\n");
   FILE* out;
   out = fopen("golden_binary.data", "wb");
   
@@ -54,10 +55,10 @@ void output_golden_binary(FILE* rbd_file, FILE* msd_file) {
     masked_gold = gold & (~mask);
     
     // Output to file
-    fwrite(&masked_gold, sizeof(masked_gold), 1, out);
+    fwrite(&masked_gold, 4, 1, out);
   }
-  printf("Golden output saved as golden_binary.data\n\n");
   fclose(out);
+  printf("Golden output saved as golden_binary.data\n\n");
 }
 
 // Main driver to verify whether two files are equal
