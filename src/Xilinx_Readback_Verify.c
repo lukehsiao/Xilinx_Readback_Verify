@@ -107,6 +107,7 @@ uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     }    
     // Compare the values
     if (verify_readback_word(data, gold, mask) == FALSE) {
+      printf("gold: %08x\n", gold);
       printf("Not equal from line: %d\n", line_number);
       return FALSE;
     }
