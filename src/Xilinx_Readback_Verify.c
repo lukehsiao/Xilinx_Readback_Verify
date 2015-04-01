@@ -98,6 +98,7 @@ uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     // Convert to Binary
     mask = convert_ascii_to_binary(mask_line);
     gold = convert_ascii_to_binary(gold_line);
+    printf("gold: %08x\n", gold);
     result = fread(&data, sizeof(uint32_t), 1, readback_data); //read 4 bytes into data
     if (result != 1) {
       printf("Reached the end of the binary file!\n");
@@ -107,7 +108,6 @@ uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     }    
     // Compare the values
     if (verify_readback_word(data, gold, mask) == FALSE) {
-      printf("gold: %08x\n", gold);
       printf("Not equal from line: %d\n", line_number);
       return FALSE;
     }
