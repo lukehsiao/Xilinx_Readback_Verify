@@ -106,11 +106,11 @@ TEST(ProductionCode, verify_full_readback_correct) {
   fclose(msd_file);
 }
 
-TEST(ProductionCode, verify_v5_burst_readback) {
+TEST(ProductionCode, verify_v5_normal_readback_nopad) {
   FILE* data_file;
   FILE* rbd_file;
   FILE* msd_file;
-  data_file = fopen("./sample/Virtex5/v5_test_burst.data", "rb");
+  data_file = fopen("./sample/Virtex5/v5_test_normal_nopad.data", "rb");
   rbd_file = fopen("./sample/Virtex5/v5_test.rbd", "r");
   msd_file = fopen("./sample/Virtex5/v5_test.msd", "r");
   
@@ -127,7 +127,7 @@ TEST(ProductionCode, verify_v5_burst_readback) {
   uint32_t result = verify_full_readback( data_file,
                                           rbd_file,
                                           msd_file,
-                                          FALSE,
+                                          TRUE,
                                           TRUE,
                                           5);
   TEST_ASSERT_TRUE(result);
@@ -137,11 +137,11 @@ TEST(ProductionCode, verify_v5_burst_readback) {
   fclose(msd_file);
 }
 
-TEST(ProductionCode, verify_v5_normal_readback_nopad) {
+TEST(ProductionCode, verify_v5_burst_readback_nopad) {
   FILE* data_file;
   FILE* rbd_file;
   FILE* msd_file;
-  data_file = fopen("./sample/Virtex5/v5_test_normal_nopad.data", "rb");
+  data_file = fopen("./sample/Virtex5/v5_test_burst_nopad.data", "rb");
   rbd_file = fopen("./sample/Virtex5/v5_test.rbd", "r");
   msd_file = fopen("./sample/Virtex5/v5_test.msd", "r");
   
