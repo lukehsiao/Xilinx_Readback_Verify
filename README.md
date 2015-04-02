@@ -26,9 +26,16 @@ Then, follow these steps:
 
 Note that before using the Xilinx-generated RBD and MSD file, you need to remove the Xilinx Header. That is, at the top of the RBD and MSD, there should be lines that look like this:
 ```
-[TODO]
+Xilinx ASCII Bitstream
+Created by Bitstream P.20131013
+Design name: 	sample.ncd;UserID=0xFFFFFFFF
+Architecture:	virtex5
+Part:        	5vlx110tff1136
+Type:        	mask
+Date:        	Tue Mar 10 11:49:16 2015
+Bits:        	31111456
 ```
-followed by the ASCII strings of 0s and 1s. Simply delete the header so that the first line is the start of the binary.
+followed by the ASCII strings of 0s and 1s. Simply delete this header so that the first line is the start of the binary.
 
 ## Usage
 To see the usage, run
