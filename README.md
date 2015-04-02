@@ -22,10 +22,20 @@ Then, follow these steps:
   1. change directory to src
   2. run make
   3. copy the RBD golden file and MSD file produced by Xilinx bitgen to the src folder
-  4. run ./verify_readback [TODO USAGE]
+  4. run ./verify_readback [-v <5/7>] [-no_pad] [-no_bram] [-rbd <filepath>] [-msd <filepath>] [-data <filepath>]
 
 Note that this will also output a binary file named "*golden_output.data*" for future use. This binary file can be directly used in diff (or other existing file comparison tools) to compare to binary readback data from the FPGA.
 
 ## Usage
-[TODO]
+To see the usage, run
+```
+./verify_readback --help
+```
+Commandline parameter descriptions:
+* **-v <#>** Specify the version of the device, either 5 or 7-series
+* **-no_pad** If your readback data file does not include the pad frame, this flag will ignore it when comparing
+* **-no_bram** If you don't read the BRAMs, this flag will ignore the difference in filesize after reading the end of your readback data
+* **-rbd <path>** Specify the path to your golden RBD file. Note that you must remove the Xilinx header (i.e. timestamp, version, etc).
+* **-msd <path>** Specify the path to your MSD file. Note that you must remove the Xilinx header (i.e. timestamp, version, etc).
+* **-data <path>** Specify the path to your readback data.
 
