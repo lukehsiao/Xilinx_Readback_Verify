@@ -158,7 +158,7 @@ TEST(ProductionCode, verify_v5_burst_readback_nopad) {
   uint32_t result = verify_full_readback( data_file,
                                           rbd_file,
                                           msd_file,
-                                          FALSE, //no pad?
+                                          TRUE, //no pad?
                                           TRUE,  // no bram?
                                           5);
   TEST_ASSERT_TRUE(result);
