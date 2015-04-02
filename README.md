@@ -24,7 +24,11 @@ Then, follow these steps:
   3. copy the RBD golden file and MSD file produced by Xilinx bitgen to the src folder
   4. run ./verify_readback [-v <5/7>] [-no_pad] [-no_bram] [-rbd <filepath>] [-msd <filepath>] [-data <filepath>]
 
-Note that this will also output a binary file named "*golden_output.data*" for future use. This binary file can be directly used in diff (or other existing file comparison tools) to compare to binary readback data from the FPGA.
+Note that before using the Xilinx-generated RBD and MSD file, you need to remove the Xilinx Header. That is, at the top of the RBD and MSD, there should be lines that look like this:
+```
+[TODO]
+```
+followed by the ASCII strings of 0s and 1s. Simply delete the header so that the first line is the start of the binary.
 
 ## Usage
 To see the usage, run
