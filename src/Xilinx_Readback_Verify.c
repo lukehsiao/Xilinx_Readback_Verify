@@ -91,6 +91,9 @@ uint32_t verify_full_readback(FILE* readback_data,
   uint32_t gold;
   size_t result;
   
+
+  
+  uint32_t line_number = 0;
   // If pad frame is not included in data file, advance past it in MSD/RBD
   if (no_pad == TRUE) {
     int words_per_frame;
@@ -102,12 +105,12 @@ uint32_t verify_full_readback(FILE* readback_data,
       words_per_frame = WORDS_PER_FRAME_7SERIES;
     }
     for (i = 0; i < words_per_frame; i++) {
+      line_number++;
       fgets(gold_line, WORD_SIZE, rbd_file);
       fgets(mask_line, WORD_SIZE, msd_file);
     }
   }
   
-  uint32_t line_number = 0;
   // Read line by line (including newline character)
   while(fgets(gold_line, WORD_SIZE, rbd_file) != NULL && fgets(mask_line, WORD_SIZE, msd_file) != NULL) {
     line_number++;
