@@ -6,7 +6,7 @@
 language: c
 compiler:
   - gcc
-  - clang
+#  - clang
 
 # Run Unit Tests
 script: cd tests && make
