@@ -1,14 +1,20 @@
 
-#CC = gcc
-CFLAGS = -g -Wall
+CC = gcc
+CFLAGS  = -g -Wall -m32
 
-default: test
+C_SRCS = \
+./Xilinx_Readback_Verify.c \
+./verify_readback.c \
 
-# To create the executable file count we need the object files
-# countwords.o, counter.o, and scanner.o:
-#
-test:  
-	$(CC) $(CFLAGS) -o test Xilinx_Readback_Verify.c
 
+INC_DIRS = -I./
+
+EXE = verify_readback
+
+all: clean default
+
+default:
+	$(CC) $(CFLAGS) $(INC_DIRS) $(C_SRCS) -o $(EXE)
+	
 clean:
-	rm test
+	rm -f $(EXE)
