@@ -32,10 +32,10 @@ To see the usage, run
 ./verify_readback --help
 ```
 Commandline parameter descriptions:
-  -v <#>      | specify the version of the device, either 5 or 7-series
-  -no_pad     | If your readback data file does not include the pad frame, this flag will ignore it when comparing
-  -no_bram    | If you don't read the BRAMs, this flag will ignore the difference in filesize after reading the end of your readback data
-  -rbd <path> | Specify the path to your golden RBD file. Note that you must remove the Xilinx header (i.e. timestamp, version, etc).
-  -msd <path> | Specify the path to your MSD file. Note that you must remove the Xilinx header (i.e. timestamp, version, etc).
-  -data <path> | Specify the path to your readback data.
+* **-v <#>** Specify the version of the device, either 5 or 7-series
+* **-no_pad** If your readback data file does not include the pad frame, this flag will ignore it when comparing
+* **-no_bram** If you don't read the BRAMs, this flag will ignore the difference in filesize after reading the end of your readback data
+* **-rbd <path>** Specify the path to your golden RBD file. Note that you must remove the Xilinx header (i.e. timestamp, version, etc).
+* **-msd <path>** Specify the path to your MSD file. Note that you must remove the Xilinx header (i.e. timestamp, version, etc).
+* **-data <path>** Specify the path to your readback data.
 
