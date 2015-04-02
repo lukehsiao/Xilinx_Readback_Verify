@@ -132,6 +132,10 @@ TEST(ProductionCode, verify_v5_normal_readback_nopad) {
                                           5);
   TEST_ASSERT_TRUE(result);
   
+  rewind(data_file);
+  rewind(rbd_file);
+  rewind(msd_file);
+  
   result = verify_full_readback(data_file,
                                 rbd_file,
                                 msd_file,
@@ -140,6 +144,10 @@ TEST(ProductionCode, verify_v5_normal_readback_nopad) {
                                 5);
   TEST_ASSERT_FALSE_MESSAGE(result, "Testing v5 data w/o ignore pad");
   
+  rewind(data_file);
+  rewind(rbd_file);
+  rewind(msd_file);
+  
   result = verify_full_readback(data_file,
                                 rbd_file,
                                 msd_file,
@@ -147,6 +155,10 @@ TEST(ProductionCode, verify_v5_normal_readback_nopad) {
                                 TRUE,
                                 7);
   TEST_ASSERT_FALSE_MESSAGE(result, "Testing v5 data w/ 7-series set");
+  
+  rewind(data_file);
+  rewind(rbd_file);
+  rewind(msd_file);
   
   result = verify_full_readback(data_file,
                                 rbd_file,
@@ -187,6 +199,10 @@ TEST(ProductionCode, verify_v5_burst_readback_nopad) {
                                           5);
   TEST_ASSERT_TRUE(result);
   
+  rewind(data_file);
+  rewind(rbd_file);
+  rewind(msd_file);
+  
   result = verify_full_readback(data_file,
                                 rbd_file,
                                 msd_file,
@@ -195,6 +211,10 @@ TEST(ProductionCode, verify_v5_burst_readback_nopad) {
                                 5);
   TEST_ASSERT_FALSE_MESSAGE(result, "Testing v5 data w/o ignore pad");
   
+  rewind(data_file);
+  rewind(rbd_file);
+  rewind(msd_file);
+  
   result = verify_full_readback(data_file,
                                 rbd_file,
                                 msd_file,
@@ -202,6 +222,10 @@ TEST(ProductionCode, verify_v5_burst_readback_nopad) {
                                 TRUE,
                                 7);
   TEST_ASSERT_FALSE_MESSAGE(result, "Testing v5 data w/ 7-series set");
+  
+  rewind(data_file);
+  rewind(rbd_file);
+  rewind(msd_file);
   
   result = verify_full_readback(data_file,
                                 rbd_file,
