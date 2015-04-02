@@ -40,9 +40,10 @@ followed by the ASCII strings of 0s and 1s. Simply delete this header so that th
 ## Usage
 To see the usage, run
 ```
-./verify_readback --help
+./verify_readback [-v (5/7)] [-no_pad] [-no_bram] [-rbd (filepath)] [-msd (filepath)] [-data (filepath)]
 ```
 Commandline parameter descriptions:
+* **--help** Show usage from the commandline
 * **-v <#>** Specify the version of the device, either 5 or 7-series
 * **-no_pad** If your readback data file does not include the pad frame, this flag will ignore it when comparing
 * **-no_bram** If you don't read the BRAMs, this flag will ignore the difference in filesize after reading the end of your readback data
