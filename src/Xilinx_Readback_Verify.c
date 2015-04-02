@@ -31,50 +31,6 @@ uint32_t verify_readback_word(uint32_t data, uint32_t gold, uint32_t mask) {
   }
 }
 
-// Parses the RBD and MSD ASCII and creates a golden binary file for comparison
-// Note that they will not perfectly match because mask bits are zeroed
-void output_golden_binary(FILE* rbd_file, FILE* msd_file) {
-  printf("Creating golden binary file...\n");
-  FILE* out;
-  out = fopen("golden_binary.data", "wb");
-  
-  char gold_line[WORD_SIZE];
-  char mask_line[WORD_SIZE];
-  uint32_t gold;
-  uint32_t mask;
-  uint32_t masked_gold;
-  
-  uint32_t line_number = 0;
-  
-  // Read line by line (including newline character)
-  while(fgets(gold_line, WORD_SIZE, rbd_file) != NULL && fgets(mask_line, WORD_SIZE, msd_file) != NULL) {
-    line_number++;
-    
-    // Eliminate newline
-    gold_line[32] = '\0';
-    mask_line[32] = '\0';
-    
-    // Convert to Binary
-    mask = convert_ascii_to_binary(mask_line);
-    gold = convert_ascii_to_binary(gold_line);
-    
-    // Mask values
-    masked_gold = gold & (~mask);
-    
-    // Output to file
-    fwrite(&masked_gold, 4, 1, out);
-    
-    // Sanity check printout
-    if ((line_number % 1000) == 0) {
-      printf("%s\t", gold_line);
-      printf("%s\n", mask_line);
-    }
-  }
-  fclose(out);
-  printf("Parsed through %d lines.\n", line_number);
-  printf("Golden output saved as golden_binary.data\n\n");
-}
-
 // Main driver to verify whether two files are equal
 uint32_t verify_full_readback(FILE* readback_data, 
                               FILE* rbd_file,
@@ -138,6 +94,5 @@ uint32_t verify_full_readback(FILE* readback_data,
       return FALSE;
     }    
   }  
-  //TODO I don't think this properly checks that the files are the same sizes
   return TRUE;
 }
