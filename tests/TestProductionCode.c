@@ -186,6 +186,7 @@ TEST(ProductionCode, verify_v5_burst_readback_nopad) {
                                           TRUE,  // no bram?
                                           5);
   TEST_ASSERT_TRUE(result);
+  
   result = verify_full_readback(data_file,
                                 rbd_file,
                                 msd_file,
@@ -200,7 +201,7 @@ TEST(ProductionCode, verify_v5_burst_readback_nopad) {
                                 TRUE,
                                 TRUE,
                                 7);
-  TEST_ASSERT_FALSE(result);
+  TEST_ASSERT_TRUE(result);
   
   result = verify_full_readback(data_file,
                                 rbd_file,
