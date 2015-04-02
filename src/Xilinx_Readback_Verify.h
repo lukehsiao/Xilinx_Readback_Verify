@@ -21,7 +21,6 @@ uint32_t verify_full_readback(FILE* readback_data,
                               FILE* msd_file,
                               int no_pad,
                               int no_bram,
-                              int fpga_series
-                              );
+                              int fpga_series);
 
 void output_golden_binary();
