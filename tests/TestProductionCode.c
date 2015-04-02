@@ -138,7 +138,7 @@ TEST(ProductionCode, verify_v5_normal_readback_nopad) {
                                 FALSE,
                                 TRUE,
                                 5);
-  TEST_ASSERT_FALSE(result);
+  TEST_ASSERT_FALSE_MESSAGE(result, "Testing v5 data w/o ignore pad");
   
   result = verify_full_readback(data_file,
                                 rbd_file,
@@ -146,7 +146,7 @@ TEST(ProductionCode, verify_v5_normal_readback_nopad) {
                                 TRUE,
                                 TRUE,
                                 7);
-  TEST_ASSERT_FALSE(result);
+  TEST_ASSERT_FALSE_MESSAGE(result, "Testing v5 data w/ 7-series set");
   
   result = verify_full_readback(data_file,
                                 rbd_file,
@@ -154,7 +154,7 @@ TEST(ProductionCode, verify_v5_normal_readback_nopad) {
                                 TRUE,
                                 FALSE,
                                 5);
-  TEST_ASSERT_FALSE(result);
+  TEST_ASSERT_FALSE_MESSAGE(result, "Testing v5 data w/o ignoring bram");
   
   fclose(data_file);
   fclose(rbd_file);
@@ -193,7 +193,7 @@ TEST(ProductionCode, verify_v5_burst_readback_nopad) {
                                 FALSE,
                                 TRUE,
                                 5);
-  TEST_ASSERT_FALSE(result);
+  TEST_ASSERT_FALSE_MESSAGE(result, "Testing v5 data w/o ignore pad");
   
   result = verify_full_readback(data_file,
                                 rbd_file,
@@ -201,7 +201,7 @@ TEST(ProductionCode, verify_v5_burst_readback_nopad) {
                                 TRUE,
                                 TRUE,
                                 7);
-  TEST_ASSERT_TRUE(result);
+  TEST_ASSERT_FALSE_MESSAGE(result, "Testing v5 data w/ 7-series set");
   
   result = verify_full_readback(data_file,
                                 rbd_file,
@@ -209,7 +209,7 @@ TEST(ProductionCode, verify_v5_burst_readback_nopad) {
                                 TRUE,
                                 FALSE,
                                 5);
-  TEST_ASSERT_FALSE(result);
+  TEST_ASSERT_FALSE_MESSAGE(result, "Testing v5 data w/o ignoring bram");
   
   fclose(data_file);
   fclose(rbd_file);
