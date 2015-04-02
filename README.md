@@ -20,9 +20,9 @@ git clone
 ```
 Then, follow these steps:  
   1. change directory to src
-  2. run make
-  3. copy the RBD golden file and MSD file produced by Xilinx bitgen to the src folder
-  4. run ./verify_readback [-v <5/7>] [-no_pad] [-no_bram] [-rbd <filepath>] [-msd <filepath>] [-data <filepath>]
+  2. run ```make```
+  3. find the filepaths to your RBD golden file, MSD file, and readback data file.
+  4. run ```./verify_readback [-v (5/7)] [-no_pad] [-no_bram] [-rbd (filepath)] [-msd (filepath)] [-data (filepath)]```
 
 Note that before using the Xilinx-generated RBD and MSD file, you need to remove the Xilinx Header. That is, at the top of the RBD and MSD, there should be lines that look like this:
 ```
