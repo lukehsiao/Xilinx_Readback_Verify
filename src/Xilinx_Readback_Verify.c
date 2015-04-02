@@ -76,7 +76,13 @@ void output_golden_binary(FILE* rbd_file, FILE* msd_file) {
 }
 
 // Main driver to verify whether two files are equal
-uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_file) {
+uint32_t verify_full_readback(FILE* readback_data, 
+                              FILE* rbd_file,
+                              FILE* msd_file,
+                              int no_pad,
+                              int no_bram
+                              int fpga_series
+                              ) {
   
   char gold_line[WORD_SIZE];
   char mask_line[WORD_SIZE];
@@ -85,6 +91,22 @@ uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
   uint32_t mask;
   uint32_t gold;
   size_t result;
+  
+  // If pad frame is not included in data file, advance past it in MSD/RBD
+  if (no_pad == TRUE) {
+    int words_per_frame;
+    int i;
+    if (fpga_series == 5) {
+      words_per_frame = WORDS_PER_FRAME_VIRTEX5;
+    }
+    else if (fpga_series == 7) {
+      words_per_frame = WORDS_PER_FRAME_7SERIES;
+    }
+    for (i = 0; i < words_per_frame; i++) {
+      fgets(gold_line, WORD_SIZE, rbd_file);
+      fgets(mask_line, WORD_SIZE, msd_file);
+    }
+  }
   
   uint32_t line_number = 0;
   // Read line by line (including newline character)
@@ -99,17 +121,15 @@ uint32_t verify_full_readback(FILE* readback_data, FILE* rbd_file, FILE* msd_fil
     mask = convert_ascii_to_binary(mask_line);
     gold = convert_ascii_to_binary(gold_line);
     result = fread(&data, sizeof(uint32_t), 1, readback_data); //read 4 bytes into data
-    if (result != 1) {
+    
+    // If BRAM's weren't included, then still report true
+    if (result != 1 && no_bram == TRUE) {
       printf("Reached the end of the binary file!\n");
-      printf("Did you not readback the BRAMs?\n");
+      printf("You specified no BRAMs.\n");
       printf("Stopped comparison on line: %d\n", line_number);
       return TRUE;
     }    
-    // Sanity check printout
-    if ((line_number % 10000) == 1) {
-      printf("%s\t", gold_line);
-      printf("%s\n", mask_line);
-    }
+
     // Compare the values
     if (verify_readback_word(data, gold, mask) == FALSE) {
       printf("Not equal from line: %d\n", line_number);
