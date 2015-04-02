@@ -81,12 +81,15 @@ uint32_t verify_full_readback(FILE* readback_data,
     result = fread(&data, sizeof(uint32_t), 1, readback_data); //read 4 bytes into data
     
     // If BRAM's weren't included, then still report true
-    if (result != 1 && no_bram == TRUE) {
-      printf("Reached the end of the binary file!\n");
-      printf("You specified no BRAMs.\n");
-      printf("Stopped comparison on line: %d\n", line_number);
-      return TRUE;
-    }    
+    if (result != 1) {
+      if (no_bram == TRUE) {
+        printf("Stopped comparison on line: %d\n", line_number);
+        return TRUE;
+      }
+      else {
+        return FALSE;
+      }
+    }
 
     // Compare the values
     if (verify_readback_word(data, gold, mask) == FALSE) {
