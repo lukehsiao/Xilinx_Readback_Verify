@@ -35,7 +35,7 @@ Type:        	mask
 Date:        	Tue Mar 10 11:49:16 2015
 Bits:        	31111456
 ```
-followed by the ASCII strings of 0s and 1s. Simply delete this header so that the first line is the start of the binary.
+followed by the ASCII strings of 0s and 1s. Simply delete this header so that the first line is the start of the 0s and 1s.
 
 ## Usage
 To see the usage, run
