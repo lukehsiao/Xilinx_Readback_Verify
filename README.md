@@ -1,6 +1,7 @@
-[![Stories in Ready](https://badge.waffle.io/lukehsiao/Xilinx_Readback_Verify.png?label=ready&title=Ready)](https://waffle.io/lukehsiao/Xilinx_Readback_Verify)
-# Xilinx Readback Verify
 [![Build Status](https://travis-ci.org/lukehsiao/Xilinx_Readback_Verify.svg?branch=master)](https://travis-ci.org/lukehsiao/Xilinx_Readback_Verify)
+[![Stories in Ready](https://badge.waffle.io/lukehsiao/Xilinx_Readback_Verify.png?label=ready&title=Ready)](https://waffle.io/lukehsiao/Xilinx_Readback_Verify)
+
+# Xilinx Readback Verify
 
 ## Introduction
 
