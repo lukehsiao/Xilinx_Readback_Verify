@@ -12,7 +12,6 @@ env:
     
 compiler:
   - gcc
-  - clang
 
 # Run Unit Tests
 script: cd tests && make
