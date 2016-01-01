@@ -8,7 +8,7 @@ language: c
 env:
   global:
     # COVERITY_SCAN_TOKEN
-    - secure: "dkK7mH4ggZR2T3yplmObpg"
+    - secure: "MqLUjkU4ofZap8d3vcO/Envk1b6TosK7BJd0+UEhJkYcgyFyL8pIevJAA3sXAxlLSi/DiZdh6te5wpHQZlAsqJdlHjTN9YYnBjQR0bimteBtps/YLihiE0ro2o6RE2UDA9h/A0w0k77eZClmaKucei5L7WysSWr1uNcipJ1HKdg="
     
 compiler:
   - gcc
