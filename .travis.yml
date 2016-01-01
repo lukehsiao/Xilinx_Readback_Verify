@@ -14,7 +14,7 @@ compiler:
   - gcc
 
 # Run Unit Tests if Coverity Passes
-script: if [ ${COVERITY_SCAN_BRANCH} != 1 ]; then cd tests && make; fi
+script: cd tests && make
   
 notifications:
   email: false  
@@ -29,7 +29,7 @@ addons:
       description: Tool for verifying readback data.
 
     # Where email notification of build analysis results will be sent
-    notification_email: lukehsiao@byu.edu
+    notification_email: none
         
     # Commands to prepare for build_command
     build_command_prepend: cd src
