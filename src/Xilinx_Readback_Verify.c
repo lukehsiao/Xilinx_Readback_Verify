@@ -52,7 +52,7 @@ uint32_t verify_full_readback(FILE* readback_data,
   uint32_t line_number = 0;
   // If pad frame is not included in data file, advance past it in MSD/RBD
   if (no_pad == TRUE) {
-    int words_per_frame;
+    int words_per_frame = WORDS_PER_FRAME_VIRTEX5;  // default value
     int i;
     if (fpga_series == 5) {
       words_per_frame = WORDS_PER_FRAME_VIRTEX5;
