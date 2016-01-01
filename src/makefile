@@ -1,6 +1,6 @@
 
 CC = gcc
-CFLAGS  = -g -Wall -m32
+CFLAGS  = -g -Wall
 
 C_SRCS = \
 ./Xilinx_Readback_Verify.c \
