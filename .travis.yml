@@ -28,6 +28,9 @@ addons:
       version: 1.0
       description: Tool for verifying readback data.
 
+    # Where email notification of build analysis results will be sent
+    notification_email: lukehsiao@byu.edu
+        
     # Commands to prepare for build_command
     build_command_prepend: cd src
 
