@@ -1,8 +1,7 @@
+# Xilinx Readback Verify
 [![Build Status](https://travis-ci.org/lukehsiao/Xilinx_Readback_Verify.svg?branch=master)](https://travis-ci.org/lukehsiao/Xilinx_Readback_Verify)
 [![Stories in Ready](https://badge.waffle.io/lukehsiao/Xilinx_Readback_Verify.png?label=ready&title=Ready)](https://waffle.io/lukehsiao/Xilinx_Readback_Verify)
 [![Coverity-Coverage](https://scan.coverity.com/projects/7447/badge.svg)](https://scan.coverity.com/projects/lukehsiao-xilinx_readback_verify?tab=overview)
-
-# Xilinx Readback Verify
 
 ## Introduction
 
