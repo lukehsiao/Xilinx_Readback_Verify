@@ -13,9 +13,6 @@ env:
 compiler:
   - gcc
 
-before_install:
-  - sudo apt-get install gcc-multilib -y
-
 # Run Unit Tests if Coverity Passes
 script: if [ ${COVERITY_SCAN_BRANCH} != 1 ]; then cd tests && make; fi
   
