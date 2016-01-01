@@ -13,8 +13,8 @@ env:
 compiler:
   - gcc
 
-# Run Unit Tests
-script: cd tests && make
+# Run Unit Tests if Coverity Passes
+script: if [ ${COVERITY_SCAN_BRANCH} != 1 ]; then cd tests && make; fi
   
 notifications:
   email: false  
