@@ -13,15 +13,7 @@ env:
 compiler:
   - gcc
   
-before_install:
-  - pip install --user codecov
-after_success:
-  - codecov
-  
-script: 
-  - cd tests
-  - make
-  - gcov unit_test
+script: cd tests && make
   
 notifications:
   email: false  
