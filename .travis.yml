@@ -12,7 +12,12 @@ env:
     
 compiler:
   - gcc
-
+  
+before_install:
+  - pip install --user codecov
+after_success:
+  - codecov
+  
 # Run Unit Tests if Coverity Passes
 script: cd tests && make
   
