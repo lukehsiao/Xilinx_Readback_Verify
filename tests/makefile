@@ -1,6 +1,6 @@
 
 #CC = gcc
-CFLAGS  = -g -Wall
+CFLAGS  = -g -Wall -coverage
 
 C_SRCS = \
 ./unity/unity.c \
