@@ -18,8 +18,10 @@ before_install:
 after_success:
   - codecov
   
-# Run Unit Tests if Coverity Passes
-script: cd tests && make
+script: 
+  - cd tests
+  - make
+  - gcov unit_test
   
 notifications:
   email: false  
